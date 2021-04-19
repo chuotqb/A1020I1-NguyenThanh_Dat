@@ -1,0 +1,4 @@
+nameCustomer,dayOfBirth,gender,idCard,phoneNumber,email,typeCustomer,address
+Kien Nguyen,12/12/1997,Female,999 999 999,123456789,abc@gmail.com,Vip,Da Nang
+Dat Nguyen,12/12/1996,Female,123 123 123,12345,abc@gmail.com,pro,Quang Nam
+Tuan Nguyen,12/12/1995,Male,234 234 234,1234,abc@gmail.com,jk,Ha Noi

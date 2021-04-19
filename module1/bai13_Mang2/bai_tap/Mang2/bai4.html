@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let chuoi = prompt("nhap chuoi");
+    let a = chuoi.split("");
+    count = 0;
+    let c=" ";
+    for (let i = 0; i < a.length; i++) {
+        if ((a[i]===c) && (a[i+1]!==c)) {
+            count++;
+        }
+
+    }
+    if (a[0]!==c){
+        count++;
+    }
+
+    alert(count);
+    document.write(a);
+    // let a=[];
+    // let length=chuoi.length;
+    // let dem;
+    // let count=0;
+    // check=false;
+    // for (let i=0;i<length;i++){
+    // a[i]=parseInt(prompt("Mời nhập vào số thứ "+i));
+    // if (!isNaN(a[i])){
+    //     count++;
+    // }
+    // }
+    // document.write(count);
+</script>
+</body>
+</html>

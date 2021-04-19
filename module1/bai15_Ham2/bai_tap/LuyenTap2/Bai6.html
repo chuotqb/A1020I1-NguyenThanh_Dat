@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function nguyenDuong(num) {
+        if (!isNaN(num)) {
+            num = Number.parseFloat(num);
+            if (Number.isInteger(num) && num > 0) {
+                alert("true");
+            } else {
+                alert("false");
+            }
+        }
+
+    }
+
+    x = prompt("Nhập vào một số: ");
+    nguyenDuong(x);
+
+</script>
+</body>
+</html>

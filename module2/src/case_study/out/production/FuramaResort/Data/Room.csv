@@ -1,0 +1,5 @@
+id,nameServices,areaUse,feeRent,numberMaxPeople,typeRent,standardRoom,descriptionOthers,numberFloors
+SVRO-0001,Roommeeting,77.0,800000.0,18,Year,karaoke,
+SVRO-0099,Roomfriend,88.0,3000000.0,13,Year,massage,
+SVRO-0101,Roomfamily,62.0,6000000.0,15,Day,drink,
+SVRO-0030,Roommeeting,84.0,2000000.0,18,Month,karaoke,

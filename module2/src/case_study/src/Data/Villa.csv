@@ -1,0 +1,5 @@
+id,nameServices,areaUse,feeRent,numberMaxPeople,typeRent,standardRoom,descriptionOthers,areaPool,numberFloors
+SVVL-0009,Villaroyal,50.0,1000000.0,18,Day,Standar,massage,40.0,20
+SVVL-0003,Villastandar,80.0,800000.0,10,Month,Vip,food,20.0,10
+SVVL-0005,Villafamily,40.0,900000.0,15,Year,Standar,drink,10.0,10
+SVVL-0001,Villaroyal,20.0,2000000.0,14,Day,Vip,karaoke,30.0,10

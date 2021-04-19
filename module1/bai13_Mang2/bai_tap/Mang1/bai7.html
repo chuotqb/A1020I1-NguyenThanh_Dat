@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Bài 7- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử,
+    // nhập/tạo phần tử số nguyên V.
+    //     Chương trình kiểm tra xem V có thuộc mảng đã cho không,
+    //     nếu V thuộc mảng đã cho xoá V khỏi mảng
+    // (Bản chất việc xoá ở đây tức là dịch phần tử ở bên phải V sang vị trí của V, và gán 0 cho phần tử cuối cùng của mảng)
+    let soNguyen = [];
+    for (let i = 0; i < 10; i++) {
+        soNguyen[i] = parseInt(prompt("Nhập vào 10 số nguyên " + i + ": "));
+    }
+    document.write("Mảng vừa nhập là: " + soNguyen + "<br>");
+    let v = parseInt(prompt("Nhập vào số nguyên V: "));
+    for (let i = 0; i < soNguyen.length; i++) {
+        if (soNguyen[i] == v) {
+            for (let j = i; j < soNguyen.length; j++) {
+                soNguyen[j] = soNguyen[j + 1];
+            }
+
+        }
+
+    }
+    soNguyen[soNguyen.length - 1] = 0;
+    console.log(soNguyen);
+
+
+</script>
+</body>
+</html>

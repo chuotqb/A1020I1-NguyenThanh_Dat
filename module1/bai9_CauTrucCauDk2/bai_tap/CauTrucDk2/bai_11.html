@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var luong = prompt("nhập số tiền lương:");
+        var soThue;
+        var luongRong = 0;
+        var thueSuat;
+        if(luong > 15){
+            soThue = luong*30/100;
+            thueSuat = 30;
+        } else if(luong>=7){
+            soThue=luong*20/100;
+            thueSuat = 20;
+        } else {
+            soThue = luong*10/100;
+            thueSuat = 10;
+        }
+        luongRong = luong - soThue;
+        console.log("số tiền lương bạn nhận được là =", luongRong);
+    </script>
+
+</body>
+</html>

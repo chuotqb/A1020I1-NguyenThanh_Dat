@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox"id="ch"  checked="true" onclick="dulieu(this.checked);"> auto </input>
+<button> man </button>
+<input type="text" id="auto" value="false">
+<script>
+      let x=false;
+    function dulieu(x) {
+     document.getElementById("ch").checked=x;
+        document.getElementById("auto").value=x;
+    }
+    dulieu(x);
+    // if (x ==! y) {
+      // }
+
+
+</script>
+</body>
+</html>

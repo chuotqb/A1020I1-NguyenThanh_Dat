@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu4</title>
+</head>
+<body>
+<input type="button" value="Thêm mới khách hàng" onclick="addNew()">
+<p id="display"></p>
+</body>
+<script>
+    class Customer{
+        constructor(id,name,phone,adress,email) {
+            this.id=id;
+            this.name=name;
+            this.phone=phone;
+            this.adress=adress;
+            this.email=email;
+        }
+        getId(){
+            return this.id;
+        }
+        getName(){
+            return this.name;
+        }
+        getPhone(){
+            return this.phone;
+        }
+        getAdress(){
+            return this.adress;
+        }
+        getEmail(){
+            return this.email;
+        }
+        setId(id){
+            this.id=id;
+        }
+        setName(name){
+            this.name=name;
+        }
+        setPhone(phone){
+            this.phone=phone;
+        }
+        setAdress(adress){
+            this.adress=adress;
+        }
+        setEmail(email){
+            this.email=email;
+        }
+        getInfor(){
+            return "1.Mã Khách Hàng: "+this.getId()+"\n"+
+                "2.Tên Khách Hàng: "+this.getName()+"\n"+
+                "3.Số Điện Thoại Khách Hàng: "+this.getPhone()+"\n"+
+                "4.Địa Chỉ Khách Hàng: "+this.getAdress()+"\n"+
+                "5.Email Khách Hàng: "+this.getEmail()+"\n"
+        }
+    }
+    let listCustomer=[];
+    let Customer1=new Customer("001","dat1","0915133266","lienchieu","abc@gmail.com");
+    let Customer2=new Customer("002","dat2","0915133266","haichau","abc@gmail.com");
+    let Customer3=new Customer("003","dat3","0915133266","thanhkhe","abc@gmail.com");
+    let Customer4=new Customer("004","dat4","0915133266","nguhanhson","abc@gmail.com");
+    listCustomer.push(Customer1);
+    listCustomer.push(Customer2);
+    listCustomer.push(Customer3);
+    listCustomer.push(Customer4);
+    display(listCustomer);
+    function display(list) {
+        let bang = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>Số Thứ Tự</th>\n' +
+            '        <th>Mã Khách Hàng</th>\n' +
+            '        <th>Tên Khách Hàng</th>\n' +
+            '        <th>Số Điện Thoại</th>\n' +
+            '       <th>Địa Chỉ</th>\n' +
+            '        <th>Email</th>\n' +
+            '    </tr>'
+        for (let i = 0; i < list.length; i++) {
+            bang += '<tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + list[i].getId() + '</td>\n' +
+                '        <td>' + list[i].getName() + '</td>\n' +
+                '        <td>' + list[i].getPhone() + '</td>\n' +
+                '        <td>' + list[i].getAdress() + '</td>\n' +
+                '        <td>' + list[i].getEmail() + '</td>\n' +
+                '    </tr>'
+        }
+        bang += '</table>'
+        document.getElementById("display").innerHTML=bang;
+    }
+    function addNew() {
+        let id = prompt("Nhập mã khách hàng");
+        let name = prompt("Nhập tên khách hàng");
+        let phone = prompt("Nhập số điện thoại khách hàng");
+        let adress = prompt("Nhập địa chỉ khách hàng")
+        let email = prompt("Nhập email khách hàng")
+        let Cus=new Customer(id,name,phone,adress,email);
+        listCustomer.push(Cus);
+        display(listCustomer);
+
+    }
+</script>
+</html>

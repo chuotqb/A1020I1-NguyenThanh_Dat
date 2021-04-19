@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = ['c', 's', 'c', '2', '6', '1'];
+    let fist=0;
+    let last=a.length-1;
+    while (fist < last) {
+        let b = a[fist];
+        a[fist] = a[last];
+        a[last] = b;
+        fist++;
+        last--;
+    }
+    document.write(a);
+</script>
+</body>
+</html>

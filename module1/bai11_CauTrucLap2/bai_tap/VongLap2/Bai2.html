@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //giai thừa của 1 số là tích các số liên tiếp từ 1 đến số đó. Trường hợp đặc biệt, giai thừa của 0 và 1 là 1.
+    var x=1;
+    var n=prompt("Nhập vào số nguyên dương")
+    if (n==1||n==0){
+        document.write("Giai thừa của số vừa nhập là: "+x);
+    }
+    else {
+        for (i=2;i<=n;i++){
+            x *=i ;
+        }
+        document.write("Giai thừa của số vừa nhập là: "+x);
+    }
+</script>
+</body>
+</html>

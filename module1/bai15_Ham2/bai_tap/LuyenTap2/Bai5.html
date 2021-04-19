@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+    function min(a, b, c) {
+        let nn = a;
+        if (a > b) {
+            if (b > c) {
+                nn = c;
+            } else {
+                nn = b;
+            }
+        } else if (a > c) {
+            nn = c;
+        }
+        return nn;
+    }
+    let x = parseInt(prompt("Nhập vào số thứ nhất"));
+    let y = parseInt(prompt("Nhập vào số thứ hai"));
+    let z = parseInt(prompt("Nhập vào số thứ ba"));
+    alert("số nhỏ nhất trong 3 số là: "+min(x,y,z));
+</script>
+</body>
+</html>

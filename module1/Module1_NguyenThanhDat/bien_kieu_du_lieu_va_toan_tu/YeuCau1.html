@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu 1</title>
+</head>
+<body>
+<script>
+    let name;
+    let idCard;
+    let birth;
+    let email;
+    let adress;
+    let typecus;
+    let discount;
+    let nofa;
+    let typeRoom;
+    let renDay;
+    let typeService;
+
+    name=prompt("Enter Name Customer: ");
+    idCard=prompt("Enter Id Card Customer:");
+    birth=prompt("Enter Birthday Customer (dd/MM/YYYY):");
+    email=prompt("Enter Email Customer:");
+    adress=prompt("Enter Address Customer:");
+    typecus=prompt("Enter Type Customer:");
+    discount=prompt("Enter Discount:");
+    nofa=prompt("Enter Number Of Accompanying:");
+    typeRoom=prompt("Enter Type Room:");
+    renDay=prompt("Enter Rent Days:");
+    typeService=prompt("Enter Type Service:");
+    totalPay=450*renDay*(1-discount/100);
+    alert("1.Tên khách hàng:"+name +"\n"
+        + "2.Số chứng minh nhân dân:"+idCard+"<\n>"
+        + "3.Ngày sinh:"+birth+"\n"
+        + "4.Email:"+email+"\n"
+        + "5.Địa chỉ:"+adress+"\n"
+        + "6.Loại khách hàng:"+typecus+"\n"
+        + "7.Giảm giá:"+discount+"\n"
+        + "8.Số lượng người:"+nofa+"\n"
+        + "9.Loại phòng:"+typeRoom+"\n"
+        + "10.Số ngày thuê:"+renDay+"\n"
+        + "11.Loại dịch vụ:"+typeService+"\n"
+        + "12.Tổng số tiền phải trả:"+totalPay+"\n"
+    );
+</script>
+</body>
+</html>

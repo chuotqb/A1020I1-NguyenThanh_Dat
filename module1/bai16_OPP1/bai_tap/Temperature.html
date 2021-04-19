@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class temperature {
+        constructor(nhietDo) {
+            this.nhietDo=nhietDo;
+        }
+        tranfer1(){
+            let x;
+            x= (this.nhietDo*9/5)+32;
+            return console.log("Nhiệt độ sau khi chuyển sang độ F ="+x);
+        }
+        tranfer2(){
+            let y;
+            y= this.nhietDo+273.15;
+            return console.log("Nhiệt độ sau khi chuyển sang Kenvin ="+y);
+        }
+    }
+    let objTemperature =new temperature(25);
+    objTemperature.tranfer1();
+    objTemperature.tranfer2();
+</script>
+</body>
+</html>

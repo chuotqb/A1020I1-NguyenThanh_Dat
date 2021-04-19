@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let i = 1;
+    let j = 1;
+    let count = 0;
+    let sum = 0;
+    while (count <= 20){
+        sum += i;
+        count++;
+        i = i+j;
+        j = i-j;
+    }
+    document.write("tổng của 20 số đầu tiên trong dãy fibonacy là" + sum);
+</script>
+
+</body>
+</html>

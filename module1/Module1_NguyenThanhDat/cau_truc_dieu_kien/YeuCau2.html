@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let name = "Nguyễn Văn A";
+    let idCard = "194759374";
+    let birth = "22/12/1999";
+    let email = "abc@gmail.com";
+    let adress = "Đà Nẵng";
+    let typecus = "Diamond";
+    let discount = "10";
+    let nofa = "20";
+    let typeRoom = "Villa";
+    let renDay = "3";
+    let typeService = "House";
+
+
+    let choose = prompt("1.Hiển thị thông tin khách hàng." + "\n" +
+        "2.Chỉnh sửa thông tin khách hàng." + "\n" +
+        "3.Hiển thị giá sau khi được giảm giá.");
+    switch (choose) {
+        case "1": {
+            alert("1.Tên khách hàng:" + name + "\n"
+                + "2.Số chứng minh nhân dân:" + idCard + "<\n>"
+                + "3.Ngày sinh:" + birth + "\n"
+                + "4.Email:" + email + "\n"
+                + "5.Địa chỉ:" + adress + "\n"
+                + "6.Loại khách hàng:" + typecus + "\n"
+                + "7.Giảm giá:" + discount + "\n"
+                + "8.Số lượng người:" + nofa + "\n"
+                + "9.Loại phòng:" + typeRoom + "\n"
+                + "10.Số ngày thuê:" + renDay + "\n"
+                + "11.Loại dịch vụ:" + typeService + "\n"
+            );
+            break;
+        }
+        case "2": {
+            let choosenEdit = parseInt(prompt("1.Tên khách hàng:" + name + "\n"
+                + "2.Số chứng minh nhân dân:" + idCard + "\n"
+                + "3.Ngày sinh:" + birth + "\n"
+                + "4.Email:" + email + "\n"
+                + "5.Địa chỉ:" + adress + "\n"
+                + "6.Loại khách hàng:" + typecus + "\n"
+                + "7.Giảm giá:" + discount + "\n"
+                + "8.Số lượng người:" + nofa + "\n"
+                + "9.Loại phòng:" + typeRoom + "\n"
+                + "10.Số ngày thuê:" + renDay + "\n"
+                + "11.Loại dịch vụ:" + typeService + "\n"
+            ));
+            switch (choosenEdit) {
+                case 1: {
+                    name = prompt("Enter Name Customer: ");
+                    break;
+                }
+                case 2: {
+                    idCard = parseInt(prompt("Enter Id Card Customer:"));
+                    break;
+                }
+                case 3: {
+                    birth = prompt("Enter Birthday Customer (dd/MM/YYYY):");
+                    break;
+                }
+                case 4: {
+                    email = prompt("Enter Email Customer:");
+                    break;
+                }
+                case 5: {
+                    adress = prompt("Enter Address Customer:");
+                    break;
+                }
+                case 6: {
+                    typecus = prompt("Enter Type Customer:");
+                    break;
+                }
+                case 7: {
+                    discount = parseInt(prompt("Enter Discount:"));
+                    break;
+                }
+                case 8: {
+                    nofa = prompt("Enter Number Of Accompanying:");
+                    break;
+                }
+                case 9: {
+                    typeRoom = prompt("Enter Type Room:");
+                    break;
+                }
+                case 10: {
+                    renDay = parseInt(prompt("Enter Rent Days:"));
+                    break;
+                }
+                case 11: {
+                    typeService = prompt("Enter Type Service:");
+                    break;
+                }
+
+                default: {
+                    alert("Failed");
+                }
+            }
+            alert("1.Tên khách hàng:" + name + "\n"
+                + "2.Số chứng minh nhân dân:" + idCard + "\n"
+                + "3.Ngày sinh:" + birth + "\n"
+                + "4.Email:" + email + "\n"
+                + "5.Địa chỉ:" + adress + "\n"
+                + "6.Loại khách hàng:" + typecus + "\n"
+                + "7.Giảm giá:" + discount + "\n"
+                + "8.Số lượng người:" + nofa + "\n"
+                + "9.Loại phòng:" + typeRoom + "\n"
+                + "10.Số ngày thuê:" + renDay + "\n"
+                + "11.Loại dịch vụ:" + typeService + "\n"
+            );
+            break;
+        }
+        case "3": {
+            let giamDiaChi;
+            switch (adress) {
+                case "Đà Nẵng": {
+                    giamDiaChi = 20;
+                    break;
+                }
+                case "Huế": {
+                    giamDiaChi = 20;
+                    break;
+                }
+                case "Quảng Nam": {
+                    giamDiaChi = 20;
+                    break;
+                }
+            }
+            let giamTime;
+            if (renDay ===7) {
+                giamTime = 30;
+            } else if (renDay >= 5 && renDay <= 7) {
+                giamTime = 20;
+            } else if (renDay >= 2 && renDay <= 4) {
+                giamTime = 10;
+            }
+            let giamCus;
+            switch (typecus) {
+                case "Diamond": {
+                    giamCus = 15;
+                    break;
+                }
+                case "Platium": {
+                    giamCus = 10;
+                    break;
+                }
+                case "Gold": {
+                    giamCus = 10;
+                    break;
+                }
+                case "Silver": {
+                    giamCus = 2;
+                    break;
+                }
+                case "Member": {
+                    giamCus = 0;
+                    break;
+                }
+
+            }
+            giamTotal = giamDiaChi + giamCus + giamTime;
+            let giaDichVu;
+            if (typeService === "Villa") {
+                giaDichVu = 500;
+            } else if (typeService === "House") {
+                giaDichVu = 300;
+            } else if (typeService === "Room") {
+                giaDichVu = 100;
+            }
+            let totalPay;
+            totalPay = giaDichVu * renDay - giamTotal;
+            alert("Số tiền phải trả sau khi chiết khấu  " + totalPay);
+
+        }
+        default: {
+            alert("các lựa chọn không nằm trong menu");
+        }
+    };
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let count=0;
+    let check=false;
+    let myArr=[];
+    let nhap=prompt("Nhập vào một kí tự bất kì: ");
+    function checkKiTu() {
+        for (i=0;i<myArr.length;i++){
+            if (myArr[i].charAt(i)===nhap){
+                check=true;
+            }
+        }
+        if (!check){
+            return -1;
+        }
+    }
+</script>
+</body>
+</html>

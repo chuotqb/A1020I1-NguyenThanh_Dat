@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="Customer.js"></script>
+</head>
+<body>
+<script>
+    let regexEmail = /\S+@\S+\.\S+/;
+    let regexBirthday = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
+    let regexIdCard = /^[\d]{8}$/;
+    let regexDiscount = /^\d+$/;
+    let regexNofa = /^\d+$/;
+    let regexRenDay = /^\d+$/;
+    let listCustomer = [];
+    let idCard;
+    let birth;
+    let email;
+    let nofa;
+    let discount;
+    let renDay;
+
+    function displayMainMenu() {
+        let choose = parseInt(prompt("1.Add new Customer." + "\n2.Display Information Customer"
+            + "\n3.Display Total Pays Customer" + "\n4.Delete Customer" + "\n5.Exit"));
+        switch (choose) {
+            case  1: {
+                addNewCustomer();
+                break;
+            }
+            case 2:{
+                displayCustomer()
+            }
+            case 3:{
+                displayTotalPays()
+            }
+            default: {
+                alert("Failed");
+            }
+
+        }
+        function displayTotalPays() {
+            let temp = "";
+            for (let i = 0; i < listCustomer.length; i++) {
+                temp += i + ". Name:" + listCustomer[i].getName() + "\n";
+            }
+            let chooseDisplay = parseInt(prompt(temp));
+            alert("Total pays của bạn là "+listCustomer[chooseDisplay].totalPays())
+        }
+
+        function addNewCustomer() {
+            let checkValid = false;
+            let cus = new Customer();
+            let name = prompt("Enter Name Customer: ");
+            do {
+                idCard = prompt("Enter Id Card Customer:");
+                if (regexIdCard.test(idCard)) {
+                    checkValid = true;
+                } else {
+                    alert("Chứng minh nhân dân không hợp lệ. Vui lòng nhập lại")
+                }
+
+            } while (!checkValid);
+            checkValid = false;
+
+            do {
+                 birth = prompt("Enter Birthday Customer (dd/MM/YYYY):");
+                if (regexBirthday.test(birth)) {
+                    checkValid = true;
+                } else {
+                    alert("Ngày tháng năm sinh không hợp lệ. Vui lòng nhập lại")
+                }
+            } while (!checkValid);
+            checkValid = false;
+
+            do {
+                email = prompt("Enter Email Customer:");
+                if (regexEmail.test(email)) {
+                    checkValid = true;
+                } else {
+                    alert("Email không hợp lệ. Vui lòng nhập lại")
+                }
+            } while (!checkValid);
+            checkValid = false;
+
+            let adress = prompt("Enter Address Customer:");
+            let typecus = prompt("Enter Type Customer:");
+            do {
+                discount = prompt("Enter Discount:");
+                if (regexDiscount.test(discount)) {
+                    checkValid = true;
+                } else {
+                    alert("Số vừa nhập không hợp lệ. Vui lòng nhập lại")
+                }
+
+            } while (!checkValid)
+            checkValid = false;
+            do {
+                 nofa = prompt("Enter Number Of Accompanying:");
+                if (regexNofa.test(nofa)) {
+                    checkValid = true;
+                } else {
+                    alert("Số vừa nhập không hợp lệ. Vui lòng nhập lại")
+                }
+            } while (!checkValid);
+            checkValid = false;
+
+            let typeRoom = prompt("Enter Type Room:");
+            do {
+                renDay = prompt("Enter Rent Days:");
+                if (regexRenDay.test(renDay)){
+                    checkValid=true;
+                }else{
+                    alert("Số vừa nhập không hợp lệ. Vui lòng nhập lại")
+                }
+            }while (!checkValid);
+            checkValid=false;
+
+            let typeService = prompt("Enter Type Service:");
+            cus.setName(name);
+            cus.setBirth(birth);
+            cus.setIdCard(idCard);
+            cus.setAdress(adress);
+            cus.setEmail(email);
+            cus.setNofa(nofa);
+            cus.setTypeCus(typecus);
+            cus.setrenDay(renDay);
+            cus.setDiscount(discount);
+            cus.setTyperoom(typeRoom);
+            cus.settypeService(typeService);
+            listCustomer.push(cus);
+            alert("Bạn đã thêm thành công!")
+            displayMainMenu();
+        }
+    }
+
+    displayMainMenu();
+</script>
+</body>
+</html>

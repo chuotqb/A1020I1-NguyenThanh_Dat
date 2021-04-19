@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <script>
+         let tien = parseInt(prompt("nhập số tiền gửi ban đầu(VND):"));
+         let laiSuat = parseInt(prompt("nhập vào lãi suất(%/năm):"));
+         let thangtietKiem = parseInt(prompt("nhập vào số tháng gửi tiết kiệm"));
+         let ngaytietKiem = thangtietKiem*30;
+         let lainganHang = tien*(laiSuat/100)*ngaytietKiem/360;
+         console.log('số tiền lãi sau' + thangtietKiem + 'tháng là' + (lainganHang) + 'VND');
+
+   </script>
+
+</body>
+</html>

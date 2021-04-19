@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var sd = parseInt(prompt("nhập vào chỉ số điện:"));
+        var tiền;
+        if(sd <= 100){
+            tiền = sd*600;
+        } else if(sd > 101 && sd <= 150){
+            tiền = sd*700;
+        } else if(sd >= 151 && sd <= 200){
+            tiền = sd*900;
+        } else {
+            tiền = sd*1100;
+        }
+        console.log("số tiền phải trả:", tiền);
+    </script>
+
+</body>
+</html>

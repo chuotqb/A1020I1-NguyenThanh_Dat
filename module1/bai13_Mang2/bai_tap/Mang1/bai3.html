@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Bài 3- Viết chương trình khởi tạo mảng số nguyên.
+    //     Hiển hiện giá trị lớn nhất trong mảng đó.
+    //     In ra giá trị trung bình của các phần tử trong mảng.
+    var soNguyen=[6,8,16,45,43,75,45,4,15,97];
+    var max=soNguyen[0];
+    var sum=0;
+    for (let i = 0; i < soNguyen.length; i++) {
+        sum+=soNguyen[i]
+        if (soNguyen[i] > max) {
+            max = soNguyen[i];
+        }
+
+    }
+    tbc=sum/soNguyen.length;
+    document.write("Giá trị lớn nhất của mảng"+max+"<br>");
+    document.write("Giá trị trung bình của các phần tử trong mảng"+tbc);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvasShape" height="500" width="1000"></canvas>
+<script>
+    let canvasS = document.getElementById("canvasShape");
+    let context = canvasS.getContext("2d");
+
+    class Rectangle {
+        constructor(chieuDai, chieuRong,) {
+            this.chieuDai = chieuDai;
+            this.chieuRong = chieuRong;
+        }
+
+        dTich() {
+            return console.log("Diện tích của hình chữ nhật: " + this.chieuDai * this.chieuRong);
+        }
+
+        cVi() {
+            return console.log("Chu vi của hình chữ nhật là: " + ((this.chieuRong + this.chieuDai) * 2));
+        }
+
+        canvas() {
+            let canvasS = document.getElementById("canvasShape");
+            let context = canvasS.getContext("2d");
+            // rect (x, y, width, height)
+            context.rect(200, 200, this.chieuRong, this.chieuDai);
+            context.stroke();
+            context.fillStyle = "red";
+            context.fill();
+        }
+    }
+    let x=parseInt(prompt("Nhập vào chiều dài của hình chữ nhật: "));
+    let y=parseInt(prompt("Nhập vào chiều rộng của hình chữ nhật: "));
+    let objRectangle= new Rectangle(x,y);
+    objRectangle.dTich();
+    objRectangle.cVi();
+    objRectangle.canvas();
+
+</script>
+</body>
+</html>

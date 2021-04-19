@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng máy tính</title>
+</head>
+<body>
+<h3>Caculator</h3>
+<form>
+    <input id="gtri1" type="text" >
+    <input id="gtri2" type="text" >
+</form>
+<br>
+<form>
+    <input type="button" value="Addition(+)" onclick="addition()">
+    <input type="button" value="Subtraction(-)" onclick="subtraction()">
+    <input type="button" value="Multiplication(X)" onclick="multiplication()">
+    <input type="button" value="Division(/)" onclick="division()">
+</form>
+<script>
+    function addition() {
+        x=document.getElementById("gtri1").value;
+        let gi1 =parseInt(x);
+        y=document.getElementById("gtri2").value;
+        let gi2 =parseInt(y);
+        kq=gi1+gi2;
+        document.write("Kết quả của phép tính là: "+kq);
+
+    }
+    function subtraction() {
+        x = document.getElementById("gtri1").value;
+        let gi1 = parseInt(x);
+        y = document.getElementById("gtri2").value;
+        let gi2 = parseInt(y);
+        kq = gi1 - gi2;
+        document.write("Kết quả của phép tính là: " + kq);
+    }
+    function multiplication() {
+        x = document.getElementById("gtri1").value;
+        let gi1 = parseInt(x);
+        y = document.getElementById("gtri2").value;
+        let gi2 = parseInt(y);
+        kq = gi1 * gi2;
+        document.write("Kết quả của phép tính là: " + kq);
+    }
+    function division() {
+        x = document.getElementById("gtri1").value;
+        let gi1 = parseInt(x);
+        y = document.getElementById("gtri2").value;
+        let gi2 = parseInt(y);
+        kq = gi1 / gi2;
+        document.write("Kết quả của phép tính là: " + kq);
+    }
+</script>
+</body>
+</html>

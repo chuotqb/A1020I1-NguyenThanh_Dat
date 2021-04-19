@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sản phẩm</title>
+</head>
+<body>
+<input type="text" id="nhap" placeholder="Nhập tên sản phẩm">
+<input type="button" value="Thêm mới sản phẩm" onclick="themMoi()"><br>
+<label>Số lượng : </label><span id="soLuong"></span>
+<p id="ketQua"></p>
+<script>
+    let array = ['iphone', 'samSung', 'nokia'];
+    hienThi();
+
+    function hienThi() {
+        let bangChuoi = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Tên Sản phẩm</th>\n' +
+            '        <th> sửa</th>\n' +
+            '        <th>Xóa</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < array.length; i++) {
+            bangChuoi += '<tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + array[i] + '</td>\n' +
+                '        <td> <input type="button" value="Sửa" onclick="sua('+i+')"></td>\n' +
+                '        <td> <input type="button" value="Xóa" onclick="xoa('+i+')"></td>\n' +
+                '    </tr>'
+        }
+        bangChuoi += '</table>';
+        document.getElementById("ketQua").innerHTML = bangChuoi;
+        document.getElementById("soLuong").innerHTML = array.length;
+    }
+
+    function themMoi() {
+        let tenSP = document.getElementById("nhap").value;
+        if (tenSP !==""){
+            array.push(tenSP);
+        }
+        document.getElementById("nhap").value="";
+        hienThi();
+    }
+    function xoa(id) {
+        let xacNhanXoa = confirm(" Bạn có muốn xóa sản phẩm "+ array[id]);
+        if (xacNhanXoa){
+            array.splice(id,1);
+        }
+        hienThi();
+
+    }
+    function sua(id) {
+        let tenSPMoi= prompt(" Nhập tên sản phẩm mới");
+        if (tenSPMoi!=null && tenSPMoi!==""){
+            array[id]=tenSPMoi;
+        }
+
+        hienThi();
+    }
+</script>
+</body>
+</html>

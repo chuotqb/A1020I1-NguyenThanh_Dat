@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let count = 0; // đếm số nguyên tố
+    let num = 2;
+    let ketQua = "";
+    while (count < 20) {
+        let check = true;
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0) {
+                check = false;
+                break;
+            }
+        }
+        if (check) {
+            ketQua += num + ", ";
+            count++;
+        }
+        num++;
+    }
+    document.write(ketQua)
+
+</script>
+</body>
+</html>

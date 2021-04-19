@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let sum=0;
+    let myArray=[];
+    let number;
+    let result="";
+    do {
+        number=parseInt(prompt("Nhập vào số lượng số cần tìm"));
+    }while (number>20||number<0);
+    for (let i=0;i<number;i++){
+        let num=parseInt(prompt("Nhập vào số thứ "+(i+1)));
+        myArray.push(num);
+    }
+    for (let j=0;j<myArray.length;j++){
+        if (myArray[j]%3===0&&myArray[j]%5===0){
+            sum+=myArray[j];
+            result+=myArray[j]+",";
+        }
+    }
+    alert("Các số trong mảng là bội chung của 3 và 5 là "+result);
+    alert("Tổng các số có trong mảng là bội chung của 3 và 5 là: "+sum);
+
+</script>
+</body>
+</html>

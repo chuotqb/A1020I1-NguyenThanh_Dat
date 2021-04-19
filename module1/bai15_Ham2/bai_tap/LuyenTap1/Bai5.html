@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr1 = ['Polaris','Aldebaran','Deneb','Vega','Altair','Dubhe','Regulus'];
+    let arr2 = ['Ursa Minor','Tarurus','Cygnus', 'Lyra', 'Aquila', 'Ursa Major' ,'Leo'];
+
+    function iFun(chuoi) {
+        let check = false;
+        let temp=0;
+        for (let i = 0; i < arr1.length; i++) {
+            if (chuoi === arr1[i]) {
+                check = true;
+                temp=i;
+            }
+        }
+        if (check) {
+            document.write(arr2[temp]);
+
+        } else {
+            alert("không tìm thấy chòm sao nào");
+
+        }
+    }
+        let x = prompt("Nhập vào tên của chòm sao: ");
+        iFun(x);
+</script>
+</body>
+</html>

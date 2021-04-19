@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="Sảm phẩm mới" id="sp">
+<input type="button" value="Nhập sản phẩm mới" id="nhapSP" onclick="nhap()">
+
+<p id="kq"></p>
+</body>
+<script>
+    // function nhap(){
+    //     x=document.getElementById('sp').value;
+    //     alert(x);
+    // }
+    hienThi();
+
+    function hienThi(){
+        let array=["samsung","iphone","lg"];
+        let nhapChuoi = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>Thứ tự</th>\n' +
+            '        <th>Tên sản phẩm</th>\n' +
+            '        <th>Sửa</th>\n' +
+            '        <th>Xóa</th>\n' +
+            '    </tr>';
+        for (i=0;i<array.length;i++){
+            nhapChuoi +=
+
+                '<tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + array[i] + '</td>\n' +
+                '        <td><input type="button" onclick="edit()" value="Sửa"></td>\n' +
+                '        <td><input type="button" onclick="delet()" value="Xóa"></td>\n' +
+                '    </tr>';
+        }
+        nhapChuoi += '</table>';
+
+        document.getElementById('kq').innerHTML=nhapChuoi;
+    }
+// function nhap() {
+//         x=document.getElementById('sp').value;
+//         array.push(x);
+//
+//          hienThi();
+// }
+    alert(array);
+
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Bài 4- Viết chương trình khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.
+    var soNguyen=[];
+
+    for (let i = 0; i < 10; i++) {
+        soNguyen[i] = parseInt(prompt("Nhập vào 10 số nguyên " + i + ": "));
+    }
+    document.write("Mảng vừa nhập là: "+soNguyen+"<br>");
+    var first=0;
+    var last=soNguyen.length-1;
+    while(first<last){
+        let b=soNguyen[first];
+        soNguyen[first]=soNguyen[last];
+        soNguyen[last]=b;
+        first++;
+        last--;
+    }
+    document.write("Mảng vừa đảo ngược là: "+soNguyen);
+</script>
+</body>
+</html>

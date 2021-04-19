@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu2</title>
+</head>
+<body>
+<script>
+    let diem=parseInt(prompt("Nhập vào điểm của học sinh: "));
+    if (diem>0&&diem<100){
+        lamTron(diem);
+    }else {
+        alert("Điểm nhập vào không đúng!")
+    }
+
+    function lamTron(diem) {
+        let temp=0;
+        let result=0;
+        if (diem>50){
+            temp=diem%5;
+            if (temp>=3){
+                result=diem+(5-temp);
+                alert(result);
+            }else {
+                alert(diem);
+            }
+        }else {
+            alert("Bạn đã trượt!");
+        }
+    }
+</script>
+</body>
+</html>

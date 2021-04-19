@@ -1,0 +1,5 @@
+id,nameServices,areaUse,feeRent,numberMaxPeople,typeRent,freeServie
+SVHO-0001,Housegaming,50.0,100000.0,14,Month,Standar,Massage,14
+SVHO-0100,Housefamily,70.0,5500000.0,15,Day,Vip,Massage,12
+SVHO-0006,Housecompany,50.0,1500000.0,11,Month,Standar,Massage,14
+SVHO-0085,Housegaming,80.0,1050000.0,5,Year,Single,Massage,10
