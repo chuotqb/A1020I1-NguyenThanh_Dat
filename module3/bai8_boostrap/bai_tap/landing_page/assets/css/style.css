@@ -1,0 +1,34 @@
+ html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 62.7%;
+    line-height: 1.6rem;
+} 
+
+.header nav {
+    background-color: white !important;
+    height: 60px !important;
+} 
+
+.navbar-brand {
+    font-weight: 500;
+    font-size: 18px !important;
+}
+
+.navbar-brand img{
+    width: 130px;
+}
+
+.collapse .navbar-nav .nav-item  a{
+    font-size: 1.4rem;
+    margin-left: 20px;
+}
+
+.collapse .navbar-nav .nav-item  a i {
+    font-size: 1.6rem;
+    
+    
+}
+
+.collapse .navbar-nav .nav-item .icon-user {
+    font-size: 3.0rem;
+}

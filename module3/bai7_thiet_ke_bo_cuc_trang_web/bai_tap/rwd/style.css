@@ -1,11 +1,14 @@
 * {
     box-sizing: border-box;
 }
+body{
+    margin: 0px;
+}
 
 html {
     font-size: 62.7%;
     line-height: 1.6rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;   
 }
 
 .col-1 {width: 8.33%;}
@@ -20,6 +23,13 @@ html {
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
 
 [class*="col-"] {
     float: left;
@@ -114,15 +124,29 @@ html {
     text-align: justify;
 }
 
+.content__right {
+    background-color: #f1f1f1 ;
+}
+
 .content__right-item {
-    margin-top: 80px;
+    margin-top: 100px;
     text-align: center;
     height: 100px;
+    
     
 }
 
 .content__right-item a {
     text-decoration: none;
     background-color: #f5f5f5;
-    padding: 48px 56px;
+    padding: 64px 140px;
+    border-radius: 4px;
+}
+
+.footer{
+    height: 60px;
+    background-color: #555555;
+    font-size: 18px;
+    text-align: center;
+    color: white;
 }
