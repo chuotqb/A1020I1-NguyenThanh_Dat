@@ -131,4 +131,16 @@ html {
     line-height: 2.2rem;
 }
 
+.footer {
+    height: 54px;
+    text-align: center;
+    background-color: #f8f8ff;
+}
+
+.footer footer {
+    padding-top: 20px;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
 
