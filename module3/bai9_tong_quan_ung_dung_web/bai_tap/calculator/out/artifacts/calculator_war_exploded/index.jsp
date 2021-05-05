@@ -12,7 +12,7 @@
   </head>
   <style>
     form input {
-      margin:12px 0px;
+      margin:10px 0px;
     }
   </style>
   <body>
