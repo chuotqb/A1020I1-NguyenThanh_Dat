@@ -16,16 +16,26 @@ public class CalculatorServlet extends HttpServlet {
         float numberOne= Integer.parseInt(request.getParameter("first-operand"));
         float numberTwo= Integer.parseInt(request.getParameter("second-operand"));
         char choose = request.getParameter("operator").charAt(0);
-        PrintWriter writer = response.getWriter();
-        writer.println("<html>");
-        writer.println("<h1>Result:<h1>");
+
+
         try {
             float result = Calculator.calculate(numberOne,numberTwo,choose);
-            writer.println(numberOne+""+choose+""+numberTwo+"="+result);
+            request.setAttribute("result",result);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }catch (Exception ex) {
-            writer.println("Error: "+ex.getMessage());
+            request.setAttribute("msg",ex.getMessage());
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }
-        writer.println("</html>");
+//        PrintWriter writer = response.getWriter();
+//        writer.println("<html>");
+//        writer.println("<h1>Result:<h1>");
+//        try {
+//            float result = Calculator.calculate(numberOne,numberTwo,choose);
+//            writer.println(numberOne+""+choose+""+numberTwo+"="+result);
+//        }catch (Exception ex) {
+//            writer.println("Error: "+ex.getMessage());
+//        }
+//        writer.println("</html>");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
