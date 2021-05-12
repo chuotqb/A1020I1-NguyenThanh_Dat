@@ -19,6 +19,9 @@
             <td>Price</td>
             <td>Decription</td>
             <td>Supplier</td>
+            <td>View By Id</td>
+            <td>Edit</td>
+            <td>Delete</td>
         </tr>
         <c:forEach items='${requestScope["products"]}' var="product">
             <tr>
@@ -38,6 +41,9 @@
                         ${product.getSponsor()}
                 </td>
                 <td>
+                    <a href="/product?action=viewByID&id=${product.getId()}">view</a>
+                </td>
+                <td>
                     <a href="/product?action=edit&id=${product.getId()}">edit</a>
                 </td>
                 <td>
@@ -51,5 +57,11 @@
 <div class="controller">
     <a href="/product?action=create">Creat new product</a>
 </div>
+<div class="controller">
+    <a href="/product?action=findByName">Find product by name</a>
+</div>
+
+
+</form>
 </body>
 </html>

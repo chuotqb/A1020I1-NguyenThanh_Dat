@@ -24,7 +24,7 @@
                 Id:
             </td>
             <td>
-                <input type="text" id="id" value="${requestScope["product"].getId()}">
+                <input type="text" name="id" value="${requestScope["product"].getId()}">
             </td>
         </tr>
         <tr>
@@ -32,7 +32,7 @@
                 Name:
             </td>
             <td>
-                <input type="text" id="name" value="${requestScope["product"].getName()}">
+                <input type="text" name="name" value="${requestScope["product"].getName()}">
             </td>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
                 Price:
             </td>
             <td>
-                <input type="text" id="price" value="${requestScope["product"].getCost()}">
+                <input type="text" name="price" value="${requestScope["product"].getCost()}">
             </td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
                 Description:
             </td>
             <td>
-                <input type="text" id="description" value="${requestScope["product"].getDescription()}">
+                <input type="text" name="description" value="${requestScope["product"].getDescription()}">
             </td>
         </tr>
         <tr>
@@ -56,7 +56,7 @@
                 Supplier:
             </td>
             <td>
-                <input type="text" id="supplier" value="${requestScope["product"].getSponsor()}">
+                <input type="text" name="supplier" value="${requestScope["product"].getSponsor()}">
             </td>
         </tr>
         <tr>
@@ -64,6 +64,13 @@
             <td><input type="submit" value="Update product"></td>
         </tr>
     </table>
+    <div>
+        <p>
+            <c:if test='${requestScope["message"] != null}'>
+                <span class="message">${requestScope["message"]}</span>
+            </c:if>
+        </p>
+    </div>
     <div>
         <p>
             <a href="/product">Back to product list</a>

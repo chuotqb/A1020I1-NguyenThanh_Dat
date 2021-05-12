@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: HADES
   Date: 5/10/2021
-  Time: 4:55 PM
+  Time: 7:17 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
@@ -10,11 +10,6 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-        .message {
-            color: green;
-        }
-    </style>
 </head>
 <body>
 <form method="post">
@@ -24,7 +19,7 @@
                 Id:
             </td>
             <td>
-                <input type="text" name="id" value="${requestScope["product"].getId()}">
+                <c:out value="${product.getId()}"></c:out>
             </td>
         </tr>
         <tr>
@@ -32,7 +27,7 @@
                 Name:
             </td>
             <td>
-                <input type="text" name="name" value="${requestScope["product"].getName()}">
+                <c:out value="${product.getName()}"></c:out>
             </td>
         </tr>
         <tr>
@@ -40,7 +35,7 @@
                 Price:
             </td>
             <td>
-                <input type="text" name="price" value="${requestScope["product"].getCost()}">
+                <c:out value="${product.getCost()}"></c:out>
             </td>
         </tr>
         <tr>
@@ -48,34 +43,27 @@
                 Description:
             </td>
             <td>
-                <input type="text" name="description" value="${requestScope["product"].getDescription()}">
+                <c:out value="${product.getDescription()}"></c:out>
             </td>
         </tr>
         <tr>
             <td>
-                Supplier:
+                Suppler:
             </td>
             <td>
-                <input type="text" name="supplier" value="${requestScope["product"].getSponsor()}">
+                <c:out value="${product.getSponsor()}"></c:out>
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td><input type="submit" value="Update product"></td>
+            <td><input type="submit" value="Delete product"></td>
         </tr>
     </table>
-    <div>
-        <p>
-            <c:if test='${requestScope["message"] != null}'>
-                <span class="message">${requestScope["message"]}</span>
-            </c:if>
-        </p>
-    </div>
-    <div>
-        <p>
-            <a href="/product">Back to product list</a>
-        </p>
-    </div>
+
 </form>
+<div>
+    <p>
+        <a href="/product">Back to product list</a>
+    </p>
+</div>
 </body>
 </html>
