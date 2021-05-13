@@ -1,7 +1,9 @@
 package controllers;
 
-import models.User;
-import models.UserDAO;
+
+
+import models.bean.User;
+import models.services.UserDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
@@ -36,6 +39,10 @@ public class UserServlet extends HttpServlet {
                 case "edit":
                     updateUser(request, response);
                     break;
+                case"findByCountry":
+                    findByCountry(request,response);
+                    break;
+
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -60,6 +67,9 @@ public class UserServlet extends HttpServlet {
                 case "delete":
                     deleteUser(request, response);
                     break;
+                case "findByCountry":
+                    showindByCountry(request,response);
+                    break;
                 default:
                     listUser(request, response);
                     break;
@@ -72,6 +82,7 @@ public class UserServlet extends HttpServlet {
     private void listUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<User> listUser = userDAO.selectAllUsers();
+        Collections.sort(listUser);
         request.setAttribute("listUser", listUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);
@@ -131,4 +142,16 @@ public class UserServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    private void findByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nameCountry = request.getParameter("nameCountry");
+       User user = userDAO.findByCountry(nameCountry);
+       request.setAttribute("user",user);
+       RequestDispatcher dispatcher = request.getRequestDispatcher("user/findByCountry.jsp");
+       dispatcher.forward(request,response);
+    }
+
+    private void showindByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/findByCountry.jsp");
+        dispatcher.forward(request, response);
+    }
 }

@@ -1,6 +1,8 @@
-package models;
+package models.services;
 
-import javax.swing.plaf.nimbus.State;
+import models.bean.User;
+import models.repository.BaseRepository;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +13,7 @@ import java.util.List;
 public class UserDAO implements IUserDAO{
     private static final String INSERT_USERS_SQL = "INSERT INTO users (`name`, email, country)" + " VALUES(?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "select id,`name`,email,country from users where id =?";
+    private static final String SELECT_USER_BY_COUNTRY = "select `name`,email,country from users where country =?";
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set `name` = ?,email= ?, country =? where id = ?;";
@@ -42,6 +45,25 @@ public class UserDAO implements IUserDAO{
                 String email = resultSet.getString("email");
                 String country = resultSet.getString("country");
                 user = new User(id,name,email,country);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    @Override
+    public User findByCountry(String nameCountry) {
+        User user = null;
+        try{
+            PreparedStatement preparedStatement = this.baseRepository.getConnection().prepareStatement(SELECT_USER_BY_COUNTRY);
+            preparedStatement.setString(1,nameCountry);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String country = resultSet.getString("country");
+                user = new User(name,email,country);
             }
         }catch (SQLException e) {
             e.printStackTrace();
