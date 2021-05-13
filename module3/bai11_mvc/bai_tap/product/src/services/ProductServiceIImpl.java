@@ -49,9 +49,10 @@ public class ProductServiceIImpl implements ProductService {
     @Override
     public Product findByName(String name) {
         int tempID = 0;
-        for (int i=0;i<productMap.size();i++){
-            if (productMap.get(i).getName().equals(name)){
-                tempID = productMap.get(i).getId();
+        List<Product> productList = new ArrayList<>(productMap.values());
+        for (int i=0;i<productList.size();i++){
+            if (productList.get(i).getName().equals(name)){
+                tempID = productList.get(i).getId();
             }
         }
         return productMap.get(tempID);

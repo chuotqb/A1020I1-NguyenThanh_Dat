@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/product?action=findByName">
+<form method="post">
     <table>
         <tr>
             <td>Nhập vào tên sản phẩm muốn tìm kiểm</td>
@@ -33,7 +33,7 @@
             Id:
         </td>
         <td>
-            <c:out value="${product.getId()}"></c:out>
+            ${requestScope["product"].getId()}
         </td>
     </tr>
     <tr>
@@ -41,7 +41,7 @@
             Name:
         </td>
         <td>
-            <c:out value="${product.getName()}"></c:out>
+            ${requestScope["product"].getName()}
         </td>
     </tr>
     <tr>
@@ -49,7 +49,7 @@
             Price:
         </td>
         <td>
-            <c:out value="${product.getCost()}"></c:out>
+            ${requestScope["product"].getCost()}
         </td>
     </tr>
     <tr>
@@ -57,7 +57,7 @@
             Description:
         </td>
         <td>
-            <c:out value="${product.getDescription()}"></c:out>
+            ${requestScope["product"].getDescription()}
         </td>
     </tr>
     <tr>
@@ -65,9 +65,14 @@
             Supllier:
         </td>
         <td>
-            <c:out value="${product.getSponsor()}"></c:out>
+            ${requestScope["product"].getSponsor()}
         </td>
     </tr>
 </table>
+<div>
+    <p>
+        <a href="/product">Back to product list</a>
+    </p>
+</div>
 </body>
 </html>
