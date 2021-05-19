@@ -3,7 +3,9 @@ package models.services;
 import models.bean.User;
 import models.repository.BaseRepository;
 
+import java.math.BigDecimal;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,17 @@ public class UserDAO implements IUserDAO {
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set `name` = ?,email= ?, country =? where id = ?;";
+    private static final String SQL_INSERT = "insert into employee (`name`,salary, created_date) values (?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE employee SET salary=? where `name`=?";
+    private static final String SQL_TABLE_CREATE = "CREATE TABLE employee"
+            +"("
+            +"id serial,"
+            +"`name` varchar(100) not null,"
+            +"salary numeric(15,2) not null,"
+            +"created_date timestamp,"
+            +"primary key (id)"
+            +")";
+    private static final String SQL_TABLE_DROP = "DROP TABLE IF EXISTS employee";
     private BaseRepository baseRepository = new BaseRepository();
     @Override
     public boolean insertUser(User user) throws SQLException {
@@ -72,8 +85,8 @@ public class UserDAO implements IUserDAO {
     public List<User> selectAllUsers() {
         List<User> userList = new ArrayList<>();
         try{
-            Statement statement = this.baseRepository.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_USERS);
+            CallableStatement callableStatement = this.baseRepository.getConnection().prepareCall("call get_user()");
+            ResultSet resultSet = callableStatement.executeQuery();
 
             User user = null;
             while (resultSet.next()) {
@@ -95,9 +108,9 @@ public class UserDAO implements IUserDAO {
     public boolean deleteUser(int id) throws SQLException {
         boolean rowDeleted = false;
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnection().prepareStatement(DELETE_USERS_SQL);
-            preparedStatement.setInt(1,id);
-            rowDeleted = preparedStatement.executeUpdate()>0;
+            CallableStatement callableStatement = this.baseRepository.getConnection().prepareCall("call delete_user(?)");
+            callableStatement.setInt(1,id);
+            rowDeleted = callableStatement.executeUpdate()>0;
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -108,13 +121,13 @@ public class UserDAO implements IUserDAO {
     public boolean updateUser(User user) throws SQLException {
         boolean rowUpdated = false;
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnection().prepareStatement(UPDATE_USERS_SQL);
-            preparedStatement.setString(1,user.getName());
-            preparedStatement.setString(2,user.getEmail());
-            preparedStatement.setString(3,user.getCountry());
-            preparedStatement.setInt(4,user.getId());
+            CallableStatement callableStatement = this.baseRepository.getConnection().prepareCall("call edit_user(?,?,?,?)");
+            callableStatement.setString(1,user.getName());
+            callableStatement.setString(2,user.getEmail());
+            callableStatement.setString(3,user.getCountry());
+            callableStatement.setInt(4,user.getId());
             
-            rowUpdated = preparedStatement.executeUpdate()>0;
+            rowUpdated = callableStatement.executeUpdate()>0;
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -201,6 +214,64 @@ public class UserDAO implements IUserDAO {
                     System.out.println(exception.getMessage());
                 }
             }
+        }
+    }
+
+    @Override
+    public void insertUpdateWithoutTransaction() {
+        try (Connection connection = this.baseRepository.getConnection()){
+            Statement statement = connection.createStatement();
+            PreparedStatement psInsert = connection.prepareStatement(SQL_INSERT);
+            PreparedStatement psUpdate = connection.prepareStatement(SQL_UPDATE);
+
+            statement.execute(SQL_TABLE_DROP);
+            statement.execute(SQL_TABLE_CREATE);
+
+            psInsert.setString(1,"quynh");
+            psInsert.setBigDecimal(2,new BigDecimal(10));
+            psInsert.setTimestamp(3,Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute();
+
+            psInsert.setString(1,"Ngan");
+            psInsert.setBigDecimal(2,new BigDecimal(20));
+            psInsert.setTimestamp(3,Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute();
+
+            psUpdate.setBigDecimal(2,new BigDecimal(999.99));
+            psUpdate.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void insertUpdateUseTransaction() {
+        try (Connection connection = this.baseRepository.getConnection();
+            Statement statement = connection.createStatement();
+            PreparedStatement psInsert = connection.prepareStatement(SQL_INSERT);
+            PreparedStatement psUpdate = connection.prepareStatement(SQL_UPDATE);){
+            statement.execute(SQL_TABLE_DROP);
+            statement.execute(SQL_TABLE_CREATE);
+            connection.setAutoCommit(false);
+            psInsert.setString(1,"Quynh");
+            psInsert.setBigDecimal(2,new BigDecimal(10));
+            psInsert.setTimestamp(3,Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute();
+
+            psInsert.setString(1,"Ngan");
+            psInsert.setBigDecimal(2, new BigDecimal(20));
+            psInsert.setTimestamp(3,Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute();
+
+            psUpdate.setBigDecimal(1,new BigDecimal(999.99));
+            psUpdate.setString(2,"Quynh");
+            psUpdate.execute();
+            connection.commit();
+            connection.setAutoCommit(true);
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getMessage());
+            throwables.printStackTrace();
         }
     }
 }

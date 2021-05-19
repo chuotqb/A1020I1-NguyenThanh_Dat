@@ -54,31 +54,6 @@ begin
 end $$
 DELIMITER ;
 
-DELIMITER $$
-create procedure get_user()
-begin
-select users.id,users.`name`,users.email,users.country
-from users;
-end $$
-DELIMITER ;
-
-DELIMITER $$
-create procedure edit_user(IN user_name varchar(50), IN user_email varchar(50),IN user_country varchar(50),IN user_id int)
-begin
-update users 
-set `name` = user_name, email= user_email, country = user_country 
-where id = user_id;
-end $$
-DELIMITER ;
-
-DELIMITER $$
-create procedure delete_user(IN user_id int)
-begin
-delete from users 
-where id = user_id;
-end $$
-DELIMITER ;
-
 
 
 
