@@ -1,11 +1,11 @@
 package models;
 
 public class Product {
-    int id;
-    String name;
-    double cost;
-    String description;
-    String sponsor;
+   private int id;
+   private String name;
+   private double cost;
+   private String description;
+   private  String sponsor;
 
     public Product() {
     }

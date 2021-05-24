@@ -68,7 +68,7 @@ public class UserServlet extends HttpServlet {
                     deleteUser(request, response);
                     break;
                 case "findByCountry":
-                    showindByCountry(request,response);
+                    listUserByCountry(request,response);
                     break;
                 default:
                     listUser(request, response);
@@ -150,7 +150,7 @@ public class UserServlet extends HttpServlet {
        dispatcher.forward(request,response);
     }
 
-    private void showindByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void listUserByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/findByCountry.jsp");
         dispatcher.forward(request, response);
     }

@@ -1,7 +1,4 @@
 package controllers;
-
-
-
 import models.bean.User;
 import models.services.UserDAO;
 
@@ -169,12 +166,12 @@ public class UserServlet extends HttpServlet {
         String nameCountry = request.getParameter("nameCountry");
        User user = userDAO.findByCountry(nameCountry);
        request.setAttribute("user",user);
-       RequestDispatcher dispatcher = request.getRequestDispatcher("user/findByCountry.jsp");
+       RequestDispatcher dispatcher = request.getRequestDispatcher("user/find-by-country.jsp");
        dispatcher.forward(request,response);
     }
 
     private void showindByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/findByCountry.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/find-by-country.jsp");
         dispatcher.forward(request, response);
     }
 }

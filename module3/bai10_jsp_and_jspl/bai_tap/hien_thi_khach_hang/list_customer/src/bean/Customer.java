@@ -1,10 +1,10 @@
 package bean;
 
 public class Customer {
-        String name;
-        String dayOfBirth;
-        String address;
-        String urlImage;
+        private String name;
+        private String dayOfBirth;
+        private String address;
+        private String urlImage;
 
     public Customer() {
     }
