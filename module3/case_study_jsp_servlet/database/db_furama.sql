@@ -86,7 +86,7 @@ create table customer (
     customer_type_id int,
     customer_name varchar(45),
     customer_birthday date,
-    customer_gender BIT(1),
+    customer_gender int,
     customer_id_card varchar(45),
     customer_phone varchar(45),
     customer_email varchar(45),
