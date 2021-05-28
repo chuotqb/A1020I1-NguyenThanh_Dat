@@ -16,18 +16,13 @@
 <div align="center">
     <form method="post">
         <table border="1" cellpadding="5">
-            <caption>
-                <h2>
-                    Edit Customer
-                </h2>
-            </caption>
             <c:if test="${customer != null}">
                 <input type="hidden" name="id" value="<c:out value='${customer.id}' />"/>
             </c:if>
             <tr>
                 <th>Type Customer:</th>
                 <td>
-                    <select  name="idTypeCustomer" id="typeCustomer" required>
+                    <select  name="typeCustomer" id="typeCustomer" required>
                         <option value="1" id="Diamond">Diamond</option>
                         <option value="2" id="Platinium">Platinium</option>
                         <option value="3" id="Gold">Gold</option>
@@ -47,7 +42,7 @@
             <tr>
                 <th>Birthday:</th>
                 <td>
-                    <input type="text" name="birthday" size="15"
+                    <input type="date" name="dayOfBirth" size="15"
                            value="<c:out value='${customer.dayOfBirth}' />"
                     />
                 </td>
@@ -64,7 +59,7 @@
             <tr>
                 <th>Id Card:</th>
                 <td>
-                    <input type="text" name="idCard" size="15"
+                    <input type="text" name="idCard" size="45"
                            value="<c:out value='${customer.idCard}' />"
                     />
                 </td>
@@ -72,7 +67,7 @@
             <tr>
                 <th>Phone:</th>
                 <td>
-                    <input type="text" name="phone" size="15"
+                    <input type="text" name="phone" size="45"
                            value="<c:out value='${customer.phone}' />"
                     />
                 </td>
@@ -80,7 +75,7 @@
             <tr>
                 <th>Email:</th>
                 <td>
-                    <input type="text" name="email" size="15"
+                    <input type="text" name="email" size="45"
                            value="<c:out value='${customer.email}' />"
                     />
                 </td>
@@ -88,7 +83,7 @@
             <tr>
                 <th>Address:</th>
                 <td>
-                    <input type="text" name="address" size="15"
+                    <input type="text" name="address" size="45"
                            value="<c:out value='${customer.address}' />"
                     />
                 </td>

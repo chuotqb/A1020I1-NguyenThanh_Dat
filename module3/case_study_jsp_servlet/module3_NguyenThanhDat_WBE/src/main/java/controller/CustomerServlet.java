@@ -1,9 +1,9 @@
 package controller;
 
-import model.bean.Customer;
-import model.bean.TypeCustomer;
-import model.services.CustomerService;
-import model.services.CustomerServiceImpl;
+import model.bean.customer.Customer;
+import model.bean.customer.TypeCustomer;
+import model.services.customer.CustomerService;
+import model.services.customer.CustomerServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,14 +29,17 @@ public class CustomerServlet extends HttpServlet {
                     insertCustomer(request, response);
                     break;
                 case "edit":
-                    updateUser(request,response);
+                    updateCustomer(request,response);
                     break;
+
             }
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
     }
+
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -50,6 +53,9 @@ public class CustomerServlet extends HttpServlet {
                     break;
                 case "edit":
                     showEditForm(request,response);
+                    break;
+                case "delete":
+                    deleteCustomer(request,response);
                     break;
                 default:
                     listCustomer(request,response);
@@ -90,8 +96,8 @@ public class CustomerServlet extends HttpServlet {
         Customer newCustomer = new Customer(id,idTypeCustomer,name,dayOfBirth,gender,idCard,phone,email,address);
         customerService.insertCustomer(newCustomer);
         request.setAttribute("message","New Customer Was Created");
-        List<TypeCustomer> typeCustomerList = customerService.selectAllTypeCustomers();
-        request.setAttribute("typeCustomerList",typeCustomerList);
+//        List<TypeCustomer> typeCustomerList = customerService.selectAllTypeCustomers();
+//        request.setAttribute("typeCustomerList",typeCustomerList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");
         dispatcher.forward(request,response);
     }
@@ -103,7 +109,7 @@ public class CustomerServlet extends HttpServlet {
         dispatcher.forward(request,response);
     }
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         int idTypeCustomer = Integer.parseInt(request.getParameter("typeCustomer"));
         String name = request.getParameter("name");
@@ -116,7 +122,18 @@ public class CustomerServlet extends HttpServlet {
 
         Customer editCustomer = new Customer(id,idTypeCustomer,name,dayOfBirth,gender,idCard,phone,email,address);
         customerService.updateCustomer(editCustomer);
+        request.setAttribute("message","New Customer Was Edited");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/edit.jsp");
+        requestDispatcher.forward(request,response);
+    }
+
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        customerService.deleteCustomer(id);
+        List<Customer> listCustomer = customerService.selectAllCustomer();
+        request.setAttribute("listCustomer",listCustomer);
+        request.setAttribute("message","New Customer Was Edited");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/list.jsp");
         requestDispatcher.forward(request,response);
     }
 }

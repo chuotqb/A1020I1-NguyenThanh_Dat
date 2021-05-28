@@ -8,9 +8,17 @@
     <link rel="stylesheet" href="datatables/css/dataTables.bootstrap4.min.css" />
 </head>
 <body>
-<div class="container">
+<%@include file="/template/header.jsp" %>
+<div class="container-fluid " style="height: 500px">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-2 mt-4 ">
+            <div class="row ">
+                <div class="col-12 d-flex justify-content-center">
+                    <a class="btn btn-success " href="/customer?action=create">Create New Customer</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 mt-3">
             <table id="tableStudent" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
@@ -24,6 +32,7 @@
                     <th>Email</th>
                     <th>Address</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,6 +71,9 @@
                         <td>
                             <a href="/customer?action=edit&id=${customer.id}">Edit</a>
                         </td>
+                        <td>
+                            <a href="/customer?action=delete&id=${customer.id}">Delete</a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -69,7 +81,7 @@
         </div>
     </div>
 </div>
-
+<%@include file="/template/footer.jsp" %>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>
 <script src="datatables/js/dataTables.bootstrap4.min.js"></script>
@@ -78,7 +90,7 @@
         $('#tableStudent').dataTable( {
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 5
+            "pageLength": 7
         } );
     } );
 </script>

@@ -8,7 +8,7 @@
 <body>
 <center>
     <h2>
-        <a href="users?action=users">List All Customer</a>
+        <a href="?type=customer">List All Customer</a>
     </h2>
 </center>
 <div align="center">
@@ -38,7 +38,7 @@
             <tr>
                 <th>Name:</th>
                 <td>
-                    <input type="text" name="name" id="name" size="15"/>
+                    <input type="text" name="name" id="name" size="45"/>
                 </td>
             </tr>
             <tr>
@@ -59,25 +59,25 @@
             <tr>
                 <th>Id Card:</th>
                 <td>
-                    <input type="text" name="idCard" id="idCard" size="15"/>
+                    <input type="text" name="idCard" id="idCard" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Phone:</th>
                 <td>
-                    <input type="text" name="phone" id="phone" size="15"/>
+                    <input type="text" name="phone" id="phone" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Email:</th>
                 <td>
-                    <input type="text" name="email" id="email" size="15"/>
+                    <input type="text" name="email" id="email" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Adress:</th>
                 <td>
-                    <input type="text" name="address" id="address" size="15"/>
+                    <input type="text" name="address" id="address" size="45"/>
                 </td>
             </tr>
             <tr>
