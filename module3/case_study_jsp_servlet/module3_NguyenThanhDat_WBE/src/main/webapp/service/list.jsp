@@ -33,8 +33,6 @@
                     <th>Description Other Convenience</th>
                     <th>Area Pool</th>
                     <th>Number Of Floor</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,12 +73,6 @@
 
                         <td><c:out value="${services.poolArea}"></c:out></td>
                         <td><c:out value="${services.numOfFloor}"></c:out></td>
-                        <td>
-                            <a href="/service?action=edit&id=${services.id}">Edit</a>
-                        </td>
-                        <td>
-                            <a href="/service?action=delete&id=${services.id}">Delete</a>
-                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

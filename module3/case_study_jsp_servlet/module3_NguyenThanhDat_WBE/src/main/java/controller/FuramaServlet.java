@@ -25,9 +25,17 @@ public class FuramaServlet extends HttpServlet {
                 break;
             case "service":
                 this.viewService(request,response);
+                break;
+            case "employee":
+                this.viewEmployee(request,response);
+                break;
             default:
                 this.viewHome(request, response);
         }
+    }
+
+    private void viewEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/employee/list.jsp").forward(request, response);
     }
 
     private void viewService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

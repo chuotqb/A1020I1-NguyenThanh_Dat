@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Create Customer</title>
+    <title>Create Service</title>
+    <link rel="stylesheet" href="bootstrap413/css/bootstrap.min.css" />
 </head>
 <body>
 <center>
@@ -14,9 +15,7 @@
 <div align="center">
     <form method="post">
         <table border="1" cellpadding="5">
-            <caption>
-                <h1>Add New Service</h1>
-            </caption>
+
             <tr>
                 <th>Id:</th>
                 <td>
@@ -63,9 +62,9 @@
             <tr>
                 <th>Type Service:</th>
                 <td>
-                    <select name="typeService">
+                    <select name="typeService" id="typeService" onchange="selectService()" >
                         <c:forEach var="typeService" items="${typeServiceList}">
-                            <option value="${typeService.id}">
+                            <option value="${typeService.id}" id="${typeService.id}">
                                 <c:out value="${typeService.name}"></c:out>
                             </option>
                         </c:forEach>
@@ -79,22 +78,22 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr id="desc">
                 <th>Description Other Convenience:</th>
                 <td>
-                    <input type="text" name="desc" id="desc" size="45"/>
+                    <input type="text" name="desc"  size="45"/>
                 </td>
             </tr>
-            <tr>
+            <tr id="areaPool">
                 <th>Area Pool:</th>
                 <td>
-                    <input type="text" name="areaPool" id="areaPool" size="45"/>
+                    <input type="text" name="areaPool"  size="45"/>
                 </td>
             </tr>
-            <tr>
+            <tr id="numOfFloor">
                 <th>Number Of Floor:</th>
                 <td>
-                    <input type="text" name="numOfFloor" id="numOfFloor" size="45"/>
+                    <input type="text" name="numOfFloor"  size="45"/>
                 </td>
             </tr>
             <tr>
@@ -110,5 +109,34 @@
         </c:if>
     </div>
 </div>
+
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script>
+    function selectService(){
+        let typeService = document.getElementById("typeService").value;
+
+        switch (typeService) {
+            case "1":
+                document.getElementById("areaPool").style.display = 'table-row';
+                document.getElementById("numOfFloor").style.display = 'table-row';
+                document.getElementById("desc").style.display = 'table-row';
+                break;
+            case "2" :
+                document.getElementById("areaPool").style.display = 'none';
+                document.getElementById("numOfFloor").style.display = 'table-row';
+                document.getElementById("desc").style.display = 'table-row';
+                break;
+            case "3":
+                document.getElementById("areaPool").style.display = 'none';
+                document.getElementById("numOfFloor").style.display = 'none';
+                document.getElementById("desc").style.display = 'none';
+                break;
+        }
+    }
+    $(window).on('load', function() {
+        selectService();
+    });
+</script>
 </body>
 </html>

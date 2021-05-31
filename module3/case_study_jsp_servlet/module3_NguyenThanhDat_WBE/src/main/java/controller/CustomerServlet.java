@@ -1,5 +1,6 @@
 package controller;
 
+import common.Validate;
 import model.bean.customer.Customer;
 import model.bean.customer.TypeCustomer;
 import model.services.customer.CustomerService;
@@ -25,6 +26,9 @@ public class CustomerServlet extends HttpServlet {
         }
         try {
             switch (action) {
+                case "delete":
+                    this.deleteCustomer(request, response);
+                    break;
                 case "create":
                     insertCustomer(request, response);
                     break;
@@ -32,13 +36,13 @@ public class CustomerServlet extends HttpServlet {
                     updateCustomer(request,response);
                     break;
 
+
             }
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
     }
-
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,6 +60,9 @@ public class CustomerServlet extends HttpServlet {
                     break;
                 case "delete":
                     deleteCustomer(request,response);
+                    break;
+                case "search":
+                    searchByName(request,response);
                     break;
                 default:
                     listCustomer(request,response);
@@ -90,21 +97,40 @@ public class CustomerServlet extends HttpServlet {
         String dayOfBirth = request.getParameter("dayOfBirth");
         int gender = Integer.parseInt(request.getParameter("gender"));
         String idCard = request.getParameter("idCard");
+        String messageidCard = Validate.validateIdCard(idCard);
         String phone = request.getParameter("phone");
+        String messagePhone = Validate.validatePhone(phone);
         String email = request.getParameter("email");
+        String messageEmail = Validate.validateEmail(email);
         String address = request.getParameter("address");
-        Customer newCustomer = new Customer(id,idTypeCustomer,name,dayOfBirth,gender,idCard,phone,email,address);
-        customerService.insertCustomer(newCustomer);
-        request.setAttribute("message","New Customer Was Created");
-//        List<TypeCustomer> typeCustomerList = customerService.selectAllTypeCustomers();
-//        request.setAttribute("typeCustomerList",typeCustomerList);
+        Customer customer = new Customer(id,idTypeCustomer,name,dayOfBirth,gender,idCard,phone,email,address);
+
+        try {
+            if (messageidCard == null && messagePhone == null && messageEmail == null) {
+                customerService.insertCustomer(customer);
+                customer = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        List<TypeCustomer> typeCustomerList = customerService.selectAllTypeCustomers();
+        request.setAttribute("messageidCard", messageidCard);
+        request.setAttribute("messagePhone", messagePhone);
+        request.setAttribute("messageEmail", messageEmail);
+        request.setAttribute("typeCustomerList",typeCustomerList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");
-        dispatcher.forward(request,response);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
     }
 
     private void listCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Customer> listCustomer = customerService.selectAllCustomer();
+        List<TypeCustomer> typeCustomerList = customerService.selectAllTypeCustomers();
         request.setAttribute("listCustomer",listCustomer);
+        request.setAttribute("type","customer");
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/list.jsp");
         dispatcher.forward(request,response);
     }
@@ -132,8 +158,18 @@ public class CustomerServlet extends HttpServlet {
         customerService.deleteCustomer(id);
         List<Customer> listCustomer = customerService.selectAllCustomer();
         request.setAttribute("listCustomer",listCustomer);
-        request.setAttribute("message","New Customer Was Edited");
+        request.setAttribute("message","Customer Was Delete");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/list.jsp");
         requestDispatcher.forward(request,response);
     }
+
+    private void searchByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String name = request.getParameter("value");
+        List<Customer> listCustomer = customerService.selectCustomerByName(name);
+        request.setAttribute("listCustomer",listCustomer);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/list.jsp");
+        dispatcher.forward(request,response);
+    }
+
+
 }

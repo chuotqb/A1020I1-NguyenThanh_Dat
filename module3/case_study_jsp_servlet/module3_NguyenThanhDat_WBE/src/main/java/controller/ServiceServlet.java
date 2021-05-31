@@ -84,14 +84,37 @@ public class ServiceServlet extends HttpServlet {
         int maxPeople = Integer.parseInt(request.getParameter("maxPeople"));
         int idTypeRent = Integer.parseInt(request.getParameter("typeRent"));
         int idTypeService = Integer.parseInt(request.getParameter("typeService"));
-        String standardRoom = request.getParameter("standardRoom");
-        String desc = request.getParameter("desc");
-        double areaPool = Double.parseDouble(request.getParameter("areaPool"));
-        int numOfFloor = Integer.parseInt(request.getParameter("numOfFloor"));
+        String standardRoom = "";
+        if (request.getParameter("standardRoom").isEmpty()){
+            standardRoom="";
+        }else {
+           standardRoom = request.getParameter("standardRoom");
+        }
+        String desc = "";
+        if (request.getParameter("desc").isEmpty()){
+            desc = "";
+        }else {
+            desc = request.getParameter("desc");
+        }
+        double areaPool =0;
+        if (request.getParameter("areaPool").isEmpty()){
+            areaPool=0;
+        }else {
+            areaPool = Double.parseDouble(request.getParameter("areaPool"));
+        }
+        int numOfFloor=0;
+        if (request.getParameter("numOfFloor").isEmpty()){
+            numOfFloor =0;
+        }else {
+            numOfFloor = Integer.parseInt(request.getParameter("numOfFloor"));
+        }
         Services services = new Services(id,name,area,cost,maxPeople,idTypeRent,idTypeService,standardRoom,desc,areaPool,numOfFloor);
         serviceManager.insertService(services);
         request.setAttribute("message","New Service Was Created");
-
+        List<TypeRent> typeRentList = serviceManager.selectAllTypeRent();
+        List<TypeService> typeServiceList = serviceManager.selectAllTypeService();
+        request.setAttribute("typeRentList",typeRentList);
+        request.setAttribute("typeServiceList",typeServiceList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("service/create.jsp");
         dispatcher.forward(request,response);
     }

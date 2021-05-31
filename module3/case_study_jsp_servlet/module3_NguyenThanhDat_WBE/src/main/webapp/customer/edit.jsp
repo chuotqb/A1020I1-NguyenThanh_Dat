@@ -10,7 +10,7 @@
 <center>
     <h1>Customer Management</h1>
     <h2>
-        <a href="/customer">List All Users</a>
+        <a href="/customer">List All Customer</a>
     </h2>
 </center>
 <div align="center">

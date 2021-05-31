@@ -87,11 +87,22 @@
             </tr>
         </table>
     </form>
-    <div class="notice">
-        <c:if test='${requestScope["message"]!=null}'>
-            <p class="message">${requestScope["message"]}</p>
+    <p>
+        <c:if test='${messageidCard!= null}'>
+            <span style="color: red" class="message">${messageidCard}</span>
         </c:if>
-    </div>
+    </p>
+
+    <p>
+        <c:if test='${messagePhone!= null}'>
+            <span style="color: red" class="message">${messagePhone}</span>
+        </c:if>
+    </p>
+    <p>
+        <c:if test='${messageEmail!= null}'>
+            <span style="color: red" class="message">${messageEmail}</span>
+        </c:if>
+    </p>
 </div>
 </body>
 </html>

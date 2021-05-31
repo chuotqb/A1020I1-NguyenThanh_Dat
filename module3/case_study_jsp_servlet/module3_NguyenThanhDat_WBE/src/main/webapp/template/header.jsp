@@ -25,7 +25,7 @@
                 <a class="nav-link ml-5 mr-5" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-5 mr-5" href="#">Employee</a>
+                <a class="nav-link ml-5 mr-5" href="/employee?type=employee&action=null">Employee</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link ml-5 mr-5" href="/customer?type=customer&action=null">Customer</a>
@@ -39,7 +39,16 @@
         </ul>
     </div>
     <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <c:choose>
+            <c:when test="${type=='customer'}">
+                <input type="hidden" name="type" value="customer">
+            </c:when>
+            <c:when test="${type=='employee'}">
+                <input type="hidden" name="type" value="employee">
+            </c:when>
+        </c:choose>
+        <input type="hidden" name="action" value="search">
+        <input class="form-control mr-sm-2" name="value" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>

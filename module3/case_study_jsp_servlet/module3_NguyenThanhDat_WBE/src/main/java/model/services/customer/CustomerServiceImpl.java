@@ -20,6 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
     private static final String UPDATE_CUSTOMER = "update customer set customer_type_id= ?, customer_name =? , customer_birthday =?, customer_gender =?, customer_id_card =?, customer_phone =?, customer_email =?, customer_address =? where customer_id = ?;";
     private static final String SELECT_CUSTOMER_BY_ID = "select customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address from customer where customer_id =?";
     private static final String DELETE_CUSTOMER_SQL = "delete from customer where customer_id = ?;";
+    private static final String SELECT_CUSTOMER_BY_NAME = "select * from customer where customer_name  like ?";
     @Override
     public boolean insertCustomer(Customer customer) throws SQLException {
         int row =0;
@@ -150,4 +151,34 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return rowDeleted;
     }
+
+    @Override
+    public List<Customer> selectCustomerByName(String name) throws SQLException {
+        List<Customer> customerList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnection().prepareStatement(SELECT_CUSTOMER_BY_NAME);
+            preparedStatement.setString(1, "%"+name+"%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Customer customer = null;
+            while (resultSet.next()) {
+                int id = resultSet.getInt("customer_id");
+                int idTypeCustomer = resultSet.getInt("customer_type_id");
+                String nameCustomer = resultSet.getString("customer_name");
+                String dayOfBirth = resultSet.getString("customer_birthday");
+                int gender = resultSet.getInt("customer_gender");
+                String idCard = resultSet.getString("customer_id_card");
+                String phone = resultSet.getString("customer_phone");
+                String email = resultSet.getString("customer_email");
+                String address = resultSet.getString("customer_address");
+                customer = new Customer(id, idTypeCustomer, nameCustomer, dayOfBirth, gender, idCard, phone, email, address);
+
+                customerList.add(customer);
+            }
+            }catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return customerList;
+        }
+
 }

@@ -19,24 +19,6 @@ create table division (
     division_name varchar(45)
 );
 
-create table `user` (
-	username varchar(225) primary key,
-    `password` varchar(225)
-);
-
-create table `role`(
-	role_id int primary key,
-    role_name varchar(225)
-);
-
-create table user_role (
-	role_id int,
-    username varchar(225),
-    
-    foreign key (username) references `user` (username),
-    foreign key (role_id) references `role` (role_id)
-);
-
 create table customer_type (
 	customer_type_id int primary key,
     customer_type_name varchar(45)
@@ -72,13 +54,12 @@ create table employee (
     employee_address varchar(45),
     position_id int,
     education_degree_id int,
-    division_id int,
-    username varchar(225),
+    division_id   int,
     
     foreign key (position_id) references position (position_id),
     foreign key (education_degree_id) references education_degree (education_degree_id),
-    foreign key (division_id) references division (division_id),
-    foreign key (username) references user (username)
+    foreign key (division_id) references division (division_id)
+    
 );
 
 create table customer (
@@ -93,16 +74,6 @@ create table customer (
     customer_address varchar(45),
     
     foreign key (customer_type_id) references customer_type (customer_type_id)
-);
-
-create table contract_detail (
-	contract_detail_id int primary key,
-    contract_id int,
-    attach_service_id int,
-    quatily int,
-    
-    foreign key (contract_id) references contract (contract_id),
-    foreign key (attach_service_id) references attach_service (attach_service_id)
 );
 
 create table service (
@@ -137,6 +108,15 @@ create table contract (
     foreign key (service_id) references service (service_id)
 );
 
+create table contract_detail (
+	contract_detail_id int primary key,
+    contract_id int,
+    attach_service_id int,
+    quatily int,
+    
+    foreign key (contract_id) references contract (contract_id),
+    foreign key (attach_service_id) references attach_service (attach_service_id)
+);
 
 
 

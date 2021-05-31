@@ -14,6 +14,7 @@
         </div>
     </div>
 </div>
+
 <%@include file="/template/footer.jsp" %>
 <script src="/jquery/jquery-3.5.1.min.js"></script>
 <script src="/bootstrap413/js/bootstrap.min.js"></script>
