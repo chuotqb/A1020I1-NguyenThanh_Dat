@@ -42,4 +42,13 @@ public class Validate {
         }
         return message;
     }
+
+    public static String validateNumber(int number) {
+        String message = null;
+
+        if (number<=0) {
+            message = "Not OK. Email invalid";
+        }
+        return message;
+    }
 }
