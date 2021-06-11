@@ -21,8 +21,6 @@
   </form>
   <h1>${key} Meaning:</h1>
   <h1>${word}</h1>
-  <c:if test='${msg}!=null}'>
-    <p>${msg}</p>
-  </c:if>
+    <h1>${msg}</h1>
   </body>
 </html>
