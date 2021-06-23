@@ -6,16 +6,16 @@ public class Product {
     private int id;
     private String name;
     private int cost;
-    private String[] typeProduct;
+    private String producer;
 
     public Product() {
     }
 
-    public Product(int id, String name, int cost, String[] typeProduct) {
+    public Product(int id, String name, int cost, String producer) {
         this.id = id;
         this.name = name;
         this.cost = cost;
-        this.typeProduct = typeProduct;
+        this.producer = producer;
     }
 
     public int getId() {
@@ -42,12 +42,12 @@ public class Product {
         this.cost = cost;
     }
 
-    public String[] getTypeProduct() {
-        return typeProduct;
+    public String getProducer() {
+        return producer;
     }
 
-    public void setTypeProduct(String[] typeProduct) {
-        this.typeProduct = typeProduct;
+    public void setProducer(String producer) {
+        this.producer = producer;
     }
 }
 

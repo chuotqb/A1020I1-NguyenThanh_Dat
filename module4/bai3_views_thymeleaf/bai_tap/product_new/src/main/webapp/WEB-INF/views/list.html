@@ -1,10 +1,7 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
         td{
@@ -14,24 +11,32 @@
     </style>
 </head>
 <body>
+<div>
+    <a th:href="@{/create}">Creat new product</a>
+</div>
+
 <table border="1">
     <tr>
          <th>ID</th>
-         <th>Tên Sản Phẩm</th>
-         <th>Giá</th>
-         <th>Nhà sản xuất</th>
+         <th>Name</th>
+         <th>Cost</th>
+         <th>Producer</th>
+         <th>Edit</th>
+         <th>Delete</th>
     </tr>
-<!--    <tbody>-->
         <tr th:each="product : ${products}">
             <td th:text="${product.getId()}"></td>
             <td th:text="${product.getName()}"></td>
             <td th:text="${product.getCost()}"></td>
-
-            <td>
-                <span th:each="type:${product.getTypeProduct()}" th:text="${type} + ' '"></span>
-            </td>
+            <td th:text="${product.getProducer()}"></td>
+            <td><a th:href="@{/{id}/edit(id=${product.getId()})}">Edit</a></td>
+            <td><a th:href="@{/{id}/delete(id=${product.getId()})}">Delete</a></td>
         </tr>
-<!--    </tbody>-->
 </table>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
 </body>
 </html>

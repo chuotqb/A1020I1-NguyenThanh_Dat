@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/save}" th:object="${prodcuct}" method="post">
+    <div>
+        <label>ID</label>
+        <input type="text" th:field="*{id}">
+    </div>
+    <div>
+        <label>Name</label>
+        <input type="text" th:field="*{name}">
+    </div>
+    <div>
+        <label>Cost</label>
+        <input type="text" th:field="*{cost}">
+    </div>
+    <div>
+        <label>Producer</label>
+        <input type="radio" th:field="*{producer}" value="Samsung">Samsung
+        <input type="radio" th:field="*{producer}" value="Xiaomi">Xiaomi
+        <input type="radio" th:field="*{producer}" value="Samsung">Apple
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+</body>
+</html>
