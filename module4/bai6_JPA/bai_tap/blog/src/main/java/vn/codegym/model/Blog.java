@@ -10,15 +10,18 @@ public class Blog {
     private int id;
     private String title;
     private String subtitle;
+    private String image;
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     public Blog() {
     }
 
-    public Blog(int id, String title, String subtitle, String content) {
+    public Blog(int id, String title, String subtitle, String image, String content) {
         this.id = id;
         this.title = title;
         this.subtitle = subtitle;
+        this.image = image;
         this.content = content;
     }
 
@@ -44,6 +47,14 @@ public class Blog {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getContent() {

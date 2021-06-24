@@ -102,7 +102,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/picture_of_the_day?createDatabaseIfNotExist=true");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/blog?createDatabaseIfNotExist=true");
         dataSource.setUsername( "root" );
         dataSource.setPassword( "thanhdat1A" );
         return dataSource;

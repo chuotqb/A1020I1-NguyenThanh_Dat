@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
-@Repository
+//@Repository
 @Transactional
 public class BlogRepositoryImpl implements BlogRepository{
     @PersistenceContext
