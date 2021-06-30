@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Blog</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<a th:href="@{/blog}" class="btn btn-success">Return to list</a>
+<form th:action="@{/blog/create}" th:object="${blog}" th:method="post">
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control"  th:field="*{title}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Subtitle</label>
+        <input type="text" class="form-control"  th:field="*{subtitle}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image</label>
+        <input type="text" class="form-control"  th:field="*{image}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Content</label>
+        <input type="text" class="form-control"  th:field="*{content}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select>
+            <option></option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+
+<script src="/js/jquery-3.6.0.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

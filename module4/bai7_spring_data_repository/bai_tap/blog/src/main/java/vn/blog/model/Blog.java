@@ -3,7 +3,6 @@ package vn.blog.model;
 import javax.persistence.*;
 
 @Entity
-@Table
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,7 +12,9 @@ public class Blog {
     private String image;
     @Column(columnDefinition = "TEXT")
     private String content;
-
+    @ManyToOne(targetEntity= Category.class)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
     public Blog() {
     }
 
@@ -23,6 +24,14 @@ public class Blog {
         this.subtitle = subtitle;
         this.image = image;
         this.content = content;
+    }
+
+    public Blog(String title, String subtitle, String image, String content, Category category) {
+        this.title = title;
+        this.subtitle = subtitle;
+        this.image = image;
+        this.content = content;
+        this.category = category;
     }
 
     public int getId() {
@@ -63,5 +72,13 @@ public class Blog {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

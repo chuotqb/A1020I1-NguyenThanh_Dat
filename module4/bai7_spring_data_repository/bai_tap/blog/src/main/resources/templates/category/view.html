@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+<body>
+<a th:href="@{/category/create}" class="btn btn-success">Create New Category</a>
+<h5 th:if="${message}" th:text="${message}" style="color: red"></h5>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="category:${categories}">
+        <tr>
+            <td th:text="${category.name}"></td>
+            <td>
+                <a class="btn btn-warning" th:href="@{category/edit/__${category.id}__}" >
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger" th:href="@{category/delete/__${category.id}__}" >
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </th:block>
+
+    </tbody>
+</table>
+
+<!-- Modal Edit-->
+<div th:if="${action=='edit'}"  class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:object="${category}" th:action="@{/category/edit}" th:method="post">
+            <div class="modal-body">
+                    <input th:field="*{id}" type="hidden"  size="50" >
+                    <input th:field="*{name}" type="text"  size="50" >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:if="${action=='delete'}"  class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:object="${category}" th:action="@{/category/delete}" th:method="post">
+                <div class="modal-body">
+                    <input th:field="*{id}" type="hidden"  size="50" >
+                    <input th:field="*{name}" type="hidden"  size="50" >
+                    <h5 th:if="${messageDelete}" th:text="${messageDelete}" style="color: red"></h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/jquery-3.6.0.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#editModal').modal('show')
+        $('#deleteModal').modal('show')
+    })
+</script>
+</body>
+</html>
