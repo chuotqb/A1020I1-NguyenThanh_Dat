@@ -36,12 +36,12 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/category/edit/{id}")
-    public String showFormEdit(@PathVariable("id") int id, Model model, @PageableDefault Pageable pageable){
+    public String showFormEdit(@PathVariable("id") int id, RedirectAttributes redirectAttributes, @PageableDefault Pageable pageable){
         Category category = categoryService.findbyId(id);
-        model.addAttribute("categories",categoryService.findAll(pageable));
-        model.addAttribute("category",category);
-        model.addAttribute("action","edit");
-        return "/category/view";
+//        redirectAttributes.addFlashAttribute("categories",categoryService.findAll(pageable));
+        redirectAttributes.addFlashAttribute("category",category);
+        redirectAttributes.addFlashAttribute("action","edit");
+        return "redirect:/category";
     }
 
     @PostMapping(value = "/category/edit")
@@ -51,13 +51,12 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/category/delete/{id}")
-    public String showFormDelete(@PathVariable("id") int id, Model model, @PageableDefault Pageable pageable){
+    public String showFormDelete(@PathVariable("id") int id, RedirectAttributes redirectAttributes, @PageableDefault Pageable pageable){
         Category category = categoryService.findbyId(id);
-        model.addAttribute("categories",categoryService.findAll(pageable));
-        model.addAttribute("category",category);
-        model.addAttribute("messageDelete","Do you want delete category: "+category.getName()+" ?");
-        model.addAttribute("action","delete");
-        return "/category/view";
+        redirectAttributes.addFlashAttribute("category",category);
+        redirectAttributes.addFlashAttribute("messageDelete","Do you want delete category: "+category.getName()+" ?");
+        redirectAttributes.addFlashAttribute("action","delete");
+        return "redirect:/category";
     }
 
     @PostMapping(value = "/category/delete")

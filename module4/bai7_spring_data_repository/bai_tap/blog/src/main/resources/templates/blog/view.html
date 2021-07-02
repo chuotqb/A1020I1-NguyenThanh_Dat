@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
-<a th:href="@{/category/create}" class="btn btn-success">Create New Category</a>
+<a th:href="@{/blog/create}" class="btn btn-success">Create New Blog</a>
 <h5 th:if="${message}" th:text="${message}" style="color: red"></h5>
 
 <table class="table table-striped">
@@ -14,6 +14,7 @@
     <tr>
         <th scope="col">Title</th>
         <th scope="col">Subtitle</th>
+        <th scope="col">Category</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
     </tr>
@@ -23,6 +24,7 @@
         <tr>
             <td th:text="${blog.title}"></td>
             <td th:text="${blog.subtitle}"></td>
+            <td th:text="${blog.category.getName()}"></td>
             <td>
                 <a class="btn btn-warning" th:href="@{blog/edit/__${blog.id}__}" >
                     Edit
@@ -49,7 +51,8 @@
             </div>
             <form th:object="${blog}" th:action="@{/blog/edit}" th:method="post">
                 <div class="modal-body">
-                    <input th:field="*{title}" type="hidden"  size="50" >
+                    <input th:field="*{id}" type="text"  size="50" >
+                    <input th:field="*{title}" type="text"  size="50" >
                     <input th:field="*{subtitle}" type="text"  size="50" >
                     <input th:field="*{image}" type="text"  size="50" >
                     <input th:field="*{content}" type="text"  size="50" >

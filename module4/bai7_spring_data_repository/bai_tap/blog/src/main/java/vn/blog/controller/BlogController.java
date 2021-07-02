@@ -24,13 +24,13 @@ public class BlogController {
     @GetMapping(value = "/blog")
     public String showBlog(@PageableDefault Pageable pageable, Model model){
         model.addAttribute("blogs",blogService.findAll(pageable));
-        model.addAttribute("categories",categoryService.findAll(pageable));
         return "blog/view";
     }
 
     @GetMapping(value = "/blog/create")
     public String showCreate(Model model){
         model.addAttribute("blog",new Blog());
+        model.addAttribute("categories",categoryService.findAll());
         return "blog/create";
     }
 
