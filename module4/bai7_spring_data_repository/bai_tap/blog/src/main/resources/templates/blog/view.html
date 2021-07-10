@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="~{/blog/layout::head}">
     <meta charset="UTF-8">
     <title>Blog</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
 <a th:href="@{/blog/create}" class="btn btn-success">Create New Blog</a>
@@ -85,16 +84,12 @@
         </div>
     </div>
 </div>
-<script src="/js/jquery-3.6.0.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<div th:insert="~{/blog/layout::footer}">
 <script>
     $(document).ready(function () {
         $('#editModal').modal('show')
         $('#deleteModal').modal('show')
     })
 </script>
-
-<script src="/js/jquery-3.6.0.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

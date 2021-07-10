@@ -19,14 +19,6 @@ public class User {
     public User() {
     }
 
-    public User(@Size(min = 5, max = 45) String firstName, @Size(min = 5, max = 45) String lastName, @Size(min = 0, max = 10) String phoneNumber, @Min(18) int age, @Email String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.age = age;
-        this.email = email;
-    }
-
     public String getFirstName() {
         return firstName;
     }
