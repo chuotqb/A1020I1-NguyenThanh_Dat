@@ -28,6 +28,9 @@ public class Book {
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     Set<CodeBook> codeSet = new LinkedHashSet<>();
 
+    public Book() {
+    }
+
     public void generateCode(CodeBook codeBook){
         codeSet.add(codeBook);
     }
